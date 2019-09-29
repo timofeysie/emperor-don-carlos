@@ -14,15 +14,25 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-range [(ngModel)]="quantum">
-      <ion-icon range-left small name="quantum"></ion-icon>
-      <ion-icon range-right name="quantum"></ion-icon>
+    <ion-range [(ngModel)]="quantum"
+      (ionChange)="quantumChange()"
+      min="4" max="8" step="1">
+      <ion-icon range-left small name="ios-grid-outline"></ion-icon>
+      <ion-icon range-right name="grid"></ion-icon>
     </ion-range>
-    <ion-range [(ngModel)]="columns">
+  </ion-item>
+  <ion-item>
+    <ion-range [(ngModel)]="columns"
+       (ionChange)="columnsChange()"
+       min="1" max="4" step="1">
       <ion-icon range-left small name="columns"></ion-icon>
       <ion-icon range-right name="columns"></ion-icon>
     </ion-range>
-    <ion-range [(ngModel)]="gutter">
+  </ion-item>
+  <ion-item>
+    <ion-range [(ngModel)]="gutter"
+       (ionChange)="gutterChange()"
+       min="1" max="5" step="1">
       <ion-icon range-left small name="gutter"></ion-icon>
       <ion-icon range-right name="gutter"></ion-icon>
     </ion-range>
@@ -31,23 +41,8 @@
   <div id="output" class="output">
     <div id="content">
   <div class="header">
-    <div class="title">CSS Variable Demo</div>
+    <div class="title">CSS Variables</div>
     <div class="shade"></div>
-
-    <!-- <div class="controls">
-      <p class="control">
-        <span class="control-key">Spacing unit:</span>
-        <input class="control-value" type="range" id="quantum" min="4" max="8" step="1">
-      </p>
-      <p class="control">
-        <span class="control-key">Columns:</span>
-        <input class="control-value" type="range" id="columns" min="1" max="4" step="1">
-      </p>
-      <p class="control">
-        <span class="control-key">Margins:</span>
-        <input class="control-value" type="range" id="gutter" min="1" max="5" step="1">
-      </p>
-    </div> -->
   </div>
   <div class="grid">
     <div class="cell" style="--primary-color: #F44336; --primary-color-text: #FFF;">

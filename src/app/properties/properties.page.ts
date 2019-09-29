@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding, ElementRef } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-properties',
@@ -6,63 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./properties.page.scss'],
 })
 export class PropertiesPage implements OnInit {
-  quantum: number = 20;
-  quantum: columns = 20;
-  quantum: gutter = 20;
-  constructor() { }
+  quantum: number = 20; // spacing-unit
+  columns: number = 3; // margins
+  gutter: number = 2; // grid-columns
 
-  ngOnInit() {
-    // Get the styles for the document.
-    // This is where we've chosen to store all the global variables we use.
-    // const styles = getComputedStyle(document.documentElement);
-    // const quantum = document.getElementById('quantum');
-    // const gutter = document.getElementById('gutter');
-    // const columns = document.getElementById('columns');
-    // // Set up event handlers for buttons.
-    // const buttons = document.querySelectorAll('.picker-button');
-    // for (let i = 0; i < buttons.length; i++) {
-    //   buttons[i].addEventListener('click', chooseDefaultColor);
-    // }
-    // // Retrieve initial custom property values and update controls.
-    // quantum.value = getVariable(styles, '--spacing-unit').replace('px', '');
-    // gutter.value = getVariable(styles, '--margins');
-    // columns.value = getVariable(styles, '--grid-columns');
-    // // Set up event handlers for having the sliders update the custom properties
-    // // at the document level.
-    // quantum.addEventListener('input', () => {
-    //   setDocumentVariable('--spacing-unit', quantum.value + 'px');
-    // });
-    // gutter.addEventListener('input', () => {
-    //   setDocumentVariable('--margins', gutter.value);
-    // });
-    // columns.addEventListener('input', () => {
-    //   setDocumentVariable('--grid-columns', columns.value);
-    // });
+  constructor(private elementRef:ElementRef) { }
+
+  ngOnInit() { }
+
+  quantumChange() {
+    this.elementRef.nativeElement.style.setProperty('--spacing-unit', this.quantum + 'px');
+    console.log('quantum',this.quantum);
   }
 
-  getVariable(styles, propertyName) {
-    return String(styles.getPropertyValue(propertyName)).trim();
+  columnsChange() {
+    this.elementRef.nativeElement.style.setProperty('--margins', this.gutter + 'px');
+    console.log('gutter',this.gutter);
   }
 
-  // Auxiliary method. Sets the value of a custom property at the document level.
-  setDocumentVariable(propertyName, value) {
-    //document.documentElement.style.setProperty(propertyName, value);
-  }
-
-  // Sets the document color scheme to the color scheme of the clicked element.
-  // This illustrates how it's easy to make a change affecting a large number of
-  // elements by simply changing a few custom properties.
-  chooseDefaultColor(event) {
-    // Get the styles for the event target (the clicked button), so we can see
-    // what its custom properties are set to.
-    // const styles = getComputedStyle(event.target);
-    //
-    // // Get the values for the button's colours...
-    // const primary = getVariable(styles, '--primary-color');
-    // const text = getVariable(styles, '--primary-color-text');
-    // // ... and apply them to the document.
-    // setDocumentVariable('--primary-color', primary);
-    // setDocumentVariable('--primary-color-text', text);
+  gutterChange() {
+    this.elementRef.nativeElement.style.setProperty('--grid-columns', this.columns + 'px');
+    console.log('columns',this.columns);
   }
 
 }
