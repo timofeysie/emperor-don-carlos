@@ -43,5 +43,8 @@ The code was from a Firebase [article](https://angularfirebase.com/lessons/css-v
 The versions in the project upon clone was:
 ```
 "@angular/core": "~6.1.1",
+"@ionic/angular": "^4.0.0-beta.0",
 "@ionic-native/core": "5.0.0-beta.14",
 ```
+
+Needs updating for sure.

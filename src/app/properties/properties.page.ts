@@ -7,7 +7,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./properties.page.scss'],
 })
 export class PropertiesPage implements OnInit {
-  quantum: number = 20; // spacing-unit
+  quantum: number = 4; // spacing-unit
   columns: number = 3; // margins
   gutter: number = 2; // grid-columns
 
@@ -21,13 +21,13 @@ export class PropertiesPage implements OnInit {
   }
 
   columnsChange() {
-    this.elementRef.nativeElement.style.setProperty('--margins', this.gutter + 'px');
-    console.log('gutter',this.gutter);
+    this.elementRef.nativeElement.style.setProperty('--grid-columns', this.columns + 'px');
+    console.log('columns',this.columns);
   }
 
   gutterChange() {
-    this.elementRef.nativeElement.style.setProperty('--grid-columns', this.columns + 'px');
-    console.log('columns',this.columns);
+    this.elementRef.nativeElement.style.setProperty('--margins', this.gutter + 'px');
+    console.log('gutter',this.gutter);
   }
 
 }
