@@ -21,12 +21,12 @@ export class PropertiesPage implements OnInit {
   }
 
   columnsChange() {
-    this.elementRef.nativeElement.style.setProperty('--grid-columns', this.columns + 'px');
+    this.elementRef.nativeElement.style.setProperty('--grid-columns', this.columns);
     console.log('columns',this.columns);
   }
 
   gutterChange() {
-    this.elementRef.nativeElement.style.setProperty('--margins', this.gutter + 'px');
+    this.elementRef.nativeElement.style.setProperty('--margins', this.gutter);
     console.log('gutter',this.gutter);
   }
 

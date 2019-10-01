@@ -32,7 +32,91 @@ this.elementRef.nativeElement.style.setProperty('--spacing-unit', this.quantum);
 
 This last one works, but only for the spacing unit.  The other two, margins and columns still don't work.
 
-Something for next week.
+## The layout
+
+Here is the basic markup from the demo source:
+```html
+<div class="grid">
+  <div class="cell" style="--primary-color: #F44336; --primary-color-text: #FFF;">
+    <header class="cell-header">
+      <div class="cell-title">
+        Red
+      </div>
+    </header>
+    <main class="cell-content">
+      Click the buttons on the cards to set the default color scheme for the
+      whole sample.
+    </main>
+    <div class="cell-actions">
+      <button class="picker-button">
+        Use this color
+        <div class="ripple"></div>
+      </button>
+    </div>
+  </div>
+  ...
+```
+
+
+The css:
+```css
+.grid {
+  /* Resets */
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  padding: calc(var(--grid-margin) - var(--cell-margin));
+  background-color: var(--grid-color);
+}
+.cell {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  color: rgb(97, 97, 97);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: calc(var(--cell-margin));
+  background-color: var(--cell-color);
+  width: calc(100% / var(--grid-columns) - var(--grid-gutter));
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+      0 3px 1px -2px rgba(0,0,0,.2),
+      0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.cell-title {
+  font-size: calc(3 * var(--spacing-unit));
+}
+
+.cell-header {
+  display: flex;
+  align-items: center;
+  color: var(--primary-color-text);
+  box-sizing: border-box;
+  background-color: var(--primary-color);
+  padding-left: calc(var(--cell-padding));
+  height: calc(12 * var(--spacing-unit));
+}
+
+.cell-content {
+  font-size: calc(2.5 * var(--spacing-unit));
+  padding: calc(var(--cell-padding));
+  flex-grow: 1;
+}
+
+.cell-actions {
+  padding: calc(2 * var(--spacing-unit));
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+```
+
+Currently, only the *--spacing-unit* property seems to be taking effect when dragging the range slider.
+
+This means that changing *--grid-columns* and *--margins* have no effect.
+
+Wait, grid columns and margins don't need 'px' attached to them like the spacing unit.  Still with this change, there is no layout change when modifying these values.
+
 
 
 ## In the beginning
