@@ -79,7 +79,11 @@ The css:
   box-sizing: border-box;
   margin: calc(var(--cell-margin));
   background-color: var(--cell-color);
-  width: calc(100% / var(--grid-columns) - var(--grid-gutter));
+
+
+
+  ebn
+  '': calc(100% / var(--grid-columns) - var(--grid-gutter));
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
       0 3px 1px -2px rgba(0,0,0,.2),
       0 1px 5px 0 rgba(0,0,0,.12);
@@ -116,6 +120,29 @@ Currently, only the *--spacing-unit* property seems to be taking effect when dra
 This means that changing *--grid-columns* and *--margins* have no effect.
 
 Wait, grid columns and margins don't need 'px' attached to them like the spacing unit.  Still with this change, there is no layout change when modifying these values.
+
+The values can be seen changing in the inspector tab.  Lets look closer.
+--grid-gutter uses --margins.  It then gets used in the width property:
+```
+width: calc(100% / var(--grid-columns) - var(--grid-gutter));
+```
+
+In the inspector styles tab however, we see this:
+```
+.cell[_ngcontent-c0] {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+    color: #616161;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: calc(var(--cell-margin));
+    background-color: var(--cell-color);
+    width: calc(100% / var(--grid-columns) - var(--grid-gutter));
+```
+
+We might be experiencing the shadow DOM here.  Can we turn off the shadow DOM using Ionic?  I know Angular three options there.  But No. The components starting in Ionic 4 have been rewritten as web components, and use the shadow DOM
+
+OK.  So it's not going to be as easy as first appeared.
 
 
 

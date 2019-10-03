@@ -12,7 +12,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<div>
+
   <ion-item>
     <ion-range [(ngModel)]="quantum"
       (ionChange)="quantumChange()"
@@ -38,12 +39,7 @@
     </ion-range>
   </ion-item>
 
-  <!-- <div id="output" class="output">
-    <div id="content">
-      <div class="top-header">
-        <div class="title">CSS Variables</div>
-        <div class="shade"></div>
-      </div> -->
+
       <div class="grid">
         <div class="cell" style="--primary-color: #F44336; --primary-color-text: #FFF;">
           <header class="cell-header">
@@ -149,8 +145,4 @@
           </div>
         </div>
       </div>
-      <!-- </div>
-    <div id="status"></div>
-    <pre id="log"></pre>
-  </div> -->
-</ion-content>
+</div>
