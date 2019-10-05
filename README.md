@@ -142,7 +142,27 @@ In the inspector styles tab however, we see this:
 
 We might be experiencing the shadow DOM here.  Can we turn off the shadow DOM using Ionic?  I know Angular three options there.  But No. The components starting in Ionic 4 have been rewritten as web components, and use the shadow DOM
 
-OK.  So it's not going to be as easy as first appeared.
+OK.  So it's not going to be as easy as first appeared.  The only to change shadow DOM Styles is by using CSS for variables that Ionic has specifically used CSS variables for. It’s like creating this API that can be used to interact with the component.
+
+Not sure why a class *and* and inline style is used in the demo:
+```
+<div class="cell" style="--primary-color: #F44336; --primary-color-text: #FFF;">
+```
+
+It seemed like a nice excuse to blame the shadow DOM for the failing functionality, but the demo doesn't include any Ionic components, so this limitation should not apply to divs with classes.  Am I right?
+
+
+### The spinner speed
+
+The svg element has class="spin".  The class is super simple:
+```
+.spin {
+    animation: spin var(--speed) linear infinite;
+}
+```
+
+
+
 
 
 
