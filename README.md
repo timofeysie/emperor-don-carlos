@@ -151,6 +151,12 @@ Not sure why a class *and* and inline style is used in the demo:
 
 It seemed like a nice excuse to blame the shadow DOM for the failing functionality, but the demo doesn't include any Ionic components, so this limitation should not apply to divs with classes.  Am I right?
 
+### Playing with shadows
+
+If you open the inspector and expand an Ionic component, you will see the shadow root which is the Shadow DOM. You can see a gray box with a light gray background and a line next to it. Everything in there is hidden from our CSS.
+
+The ion-content web component has an ion-scroll which uses slots.  A slot is a way to provide some input to a web component. This is where the users content can be injected. ion-card and the ion-lists are inside of the Shadow DOM but it’s being projected there through slots. If you click on reveal on the ion-card, you can see that that’s actually sitting outside of the Shadow DOM so we can target this with styles because it’s not inside the Shadow DOM, it’s being projected there.
+
 
 ### The spinner speed
 
