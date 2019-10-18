@@ -3,6 +3,15 @@
 An Ionic Angular app with dynamic theming.
 
 
+## Doing a build with Capacitor
+
+```
+ionic integrations enable capacitor
+```
+
+
+
+
 ## Adding CSS custom properties
 
 Using [this demo](https://googlechrome.github.io/samples/css-custom-properties/) as a starting point, there was a lot of work to do to get this vanilla demo to play well in Angular land.
@@ -173,6 +182,8 @@ The svg element has class="spin".  The class is super simple:
 
 
 ## In the beginning
+
+Cortez told Olintecle “I would have you know that we have come from distant lands at the order of our lord and King, the Emperor Don Carlos, who has many and great princes as his vassals, and he sends us to command your great Prince Montezuma not to sacrifice or kill any more Indians, or to rob his vassals, or to seize any more lands, but to give his fealty to our lord the King. And now I say the same to you, Olintecle, and to all the other Caciques who are with you, desist from your sacrifices, and no longer eat the flesh of your own relations, and cease to commit sodomy, and the other evil customs which you practice, for such is the will of our Lord God, whom we believe in and worship, the giver of life and death who will take us up to heaven.”
 
 This project was cloned from the GitHub repo for Episode 128 - Custom Theme Generator in Ionic 4.
 The code was from a Firebase [article](https://angularfirebase.com/lessons/css-variables-in-ionic-4/#CSS-Variable-Basics) on using CSS variables and Ionic to override the theme dynamically.

@@ -1,7 +1,8 @@
 {
-  "name": "ionCSS",
+  "name": "EmperorDonCarlos",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

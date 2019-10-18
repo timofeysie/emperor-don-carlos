@@ -1,0 +1,7 @@
+{
+  "appId": "com.curchod.carlos",
+  "appName": "emperorDonCarlos",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
