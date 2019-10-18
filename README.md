@@ -2,6 +2,47 @@
 
 An Ionic Angular app with dynamic theming.
 
+The PWA version of this project is live at [this address](https://emperor-don-carlos.firebaseapp.com/home).
+
+
+## Creating the pwa
+
+Following [this guide](https://ionicframework.com/docs/publishing/progressive-web-app).
+```
+npm install -g @angular/cli
+ng add @angular/pwa
+```
+The error:
+```
+Installed packages for tooling via npm.
+Invalid rule result: Instance of class Promise.
+ionic build --prod --service-worker
+ERROR in Module build failed: Error: Missing binding C:\Users\timof\repos\temp\emperor-don-carlos\node_modules\node-sass\vendor\win32-x64-72\binding.node
+Node Sass could not find a binding for your current environment: Windows 64-bit with Node.js 12.x
+Found bindings for the following environments:
+  - Windows 64-bit with Node.js 8.x
+....
+at NormalModule.build (C:\Users\timof\repos\temp\emperor-don-carlos\node_modules\webpack\lib\NormalModule.js:365:15)[ERROR] An error occurred while running subprocess ng.
+```
+
+The solution:
+```
+$ node rebuild sass
+```
+
+create the project in Firebase.
+https://console.firebase.google.com/?pli=1
+
+```
+npm install -g firebase-tools
+firebase login
+firebase init
+ionic build --prod
+```
+
+Project Console: https://console.firebase.google.com/project/emperor-don-carlos/overview
+Hosting URL: https://emperor-don-carlos.firebaseapp.com
+
 
 ## Doing a build with Capacitor
 
@@ -175,7 +216,6 @@ The svg element has class="spin".  The class is super simple:
     animation: spin var(--speed) linear infinite;
 }
 ```
-
 
 
 
