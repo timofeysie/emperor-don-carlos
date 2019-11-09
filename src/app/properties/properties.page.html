@@ -12,137 +12,281 @@
   </ion-toolbar>
 </ion-header>
 
-<div>
+<ion-content>
+  <ion-card text-center>
+    <ion-card-content>
+      <ion-card-title>Emperor Don Carlos</ion-card-title>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-item>
-    <ion-range [(ngModel)]="quantum"
-      (ionChange)="quantumChange()"
-      min="4" max="8" step="1">
-      <ion-icon range-left small name="ios-grid-outline"></ion-icon>
-      <ion-icon range-right name="grid"></ion-icon>
-    </ion-range>
-  </ion-item>
-  <ion-item>
-    <ion-range [(ngModel)]="columns"
-       (ionChange)="columnsChange()"
-       min="1" max="4" step="1">
-      <ion-icon range-left small name="columns"></ion-icon>
-      <ion-icon range-right name="columns"></ion-icon>
-    </ion-range>
-  </ion-item>
-  <ion-item>
-    <ion-range [(ngModel)]="gutter"
-       (ionChange)="gutterChange()"
-       min="1" max="5" step="1">
-      <ion-icon range-left small name="gutter"></ion-icon>
-      <ion-icon range-right name="gutter"></ion-icon>
-    </ion-range>
-  </ion-item>
-
-
-      <div class="grid">
-        <div class="cell" style="--primary-color: #F44336; --primary-color-text: #FFF;">
-          <header class="cell-header">
-            <div class="cell-title">
-              Red
-            </div>
-          </header>
-          <main class="cell-content">
-            Click the buttons on the cards to set the default color scheme for the
-            whole sample.
-          </main>
-          <div class="cell-actions">
-            <button class="picker-button">
-              Use this color
-              <div class="ripple"></div>
-            </button>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button color="primary" (click)="changeTheme('autumn')">Autumn</ion-button>
+      </ion-col>
+      <ion-col text-center>
+        <ion-button color="secondary" (click)="changeTheme('night')">Dark</ion-button>
+      </ion-col>
+      <ion-col text-center>
+        <ion-button color="tertiary" (click)="changeTheme('neon')">Neon</ion-button>
+      </ion-col>
+      <ion-col text-center>
+        <ion-button color="medium" (click)="changeTheme('')">Default</ion-button>
+      </ion-col>
+      <ion-col text-center>
+        <ion-button color="secondary" (click)="changeTheme('night')">Dark</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- font size -->
+      <ion-col>
+        <ion-item lines="none">
+          <ion-range [(ngModel)]="quantum" (ionChange)="quantumChange()" min="4" max="10" step="1">
+            <ion-icon size="small" slot="start" name="radio-button-off"></ion-icon>
+            <ion-icon slot="end" name="radio-button-on"></ion-icon>
+          </ion-range>
+        </ion-item>
+      </ion-col>
+      <!-- border width -->
+      <ion-col>
+        <ion-item lines="none">
+          <ion-range [(ngModel)]="borderWidth" (ionChange)="borderWidthChange()" min="0" max="10" step="1">
+            <ion-icon size="small" slot="start" name="ios-qr-scanner"></ion-icon>
+            <ion-icon slot="end" name="md-qr-scanner"></ion-icon>
+          </ion-range>
+        </ion-item>
+      </ion-col>
+      <!-- border radius -->
+      <ion-col>
+        <ion-item lines="none">
+          <ion-range [(ngModel)]="borderRadius" (ionChange)="borderRadiusChange()" min="0" max="10" step="1">
+            <ion-icon size="small" slot="start" name="ios-square-outline"></ion-icon>
+            <ion-icon slot="end" name="md-radio-button-off"></ion-icon>
+          </ion-range>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <!-- columns -->
+        <ion-item lines="none">
+          <ion-range [(ngModel)]="columns" (ionChange)="columnsChange()" min="1" max="6" step="1">
+            <ion-icon size="small" slot="start" name="md-menu"></ion-icon>
+            <ion-icon slot="end" name="md-grid"></ion-icon>
+          </ion-range>
+        </ion-item>
+      </ion-col>
+      <!-- gutter -->
+      <ion-col>
+        <ion-item lines="none">
+          <ion-range [(ngModel)]="gutter" (ionChange)="gutterChange()" min="1" max="15" step="2">
+            <ion-icon size="small" slot="start" name="ios-easel"></ion-icon>
+            <ion-icon slot="end" name="md-easel"></ion-icon>
+          </ion-range>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <div class="grid" padding>
+      <div class="cell">
+        <header class="cell-header primary-bg">
+          <div class="cell-title">
+            Quantum
           </div>
-        </div>
-        <div class="cell" style="--primary-color: #E91E63; --primary-color-text: #FFF;">
-          <header class="cell-header">
-            <div class="cell-title">
-              Pink
-            </div>
-          </header>
-          <main class="cell-content">
-            The colors on the cards are not affected because they're individually
-            defined at the card level, and thus prioritised according to standard CSS
-            rules.
-          </main>
-          <div class="cell-actions">
-            <button class="picker-button">
-              Use this color
-              <div class="ripple"></div>
-            </button>
-          </div>
-        </div>
-        <div class="cell" style="--primary-color: #9C27B0; --primary-color-text: #FFF;">
-          <header class="cell-header">
-            <div class="cell-title">
-              Purple
-            </div>
-          </header>
-          <main class="cell-content">
-            Use the controls above to adjust some properties that affect the entire
-            page.
-          </main>
-          <div class="cell-actions">
-            <button class="picker-button">
-              Use this color
-              <div class="ripple"></div>
-            </button>
-          </div>
-        </div>
-        <div class="cell" style="--primary-color: #00BCD4; --primary-color-text: #424242;">
-          <header class="cell-header">
-            <div class="cell-title">
-              Cyan
-            </div>
-          </header>
-          <main class="cell-content">
-            Every size on the page is calculated as a multiple of the spacing unit,
-            so setting the property to a different value resizes all elements.
-          </main>
-          <div class="cell-actions">
-            <button class="picker-button">
-              Use this color
-              <div class="ripple"></div>
-            </button>
-          </div>
-        </div>
-        <div class="cell" style="--primary-color: #009688; --primary-color-text: #FFF;">
-          <header class="cell-header">
-            <div class="cell-title">
-              Teal
-            </div>
-          </header>
-          <main class="cell-content">
-            Changing the number of columns is done by recalculating the relative size
-            of cells on the grid.
-          </main>
-          <div class="cell-actions">
-            <button class="picker-button">
-              Use this color
-              <div class="ripple"></div>
-            </button>
-          </div>
-        </div>
-        <div class="cell" style="--primary-color: #4CAF50; --primary-color-text: #424242;">
-          <header class="cell-header">
-            <div class="cell-title">
-              Green
-            </div>
-          </header>
-          <main class="cell-content">
-            Margins adjusts both the spacing around the grid and the gutters inside of
-            it.
-          </main>
-          <div class="cell-actions">
-            <button class="picker-button">
-              Use this color
-              <div class="ripple"></div>
-            </button>
-          </div>
+        </header>
+        <main class="cell-content">
+          Click the buttons on the cards to set the default color scheme for the whole sample.
+        </main>
+        <div class="cell-actions">
+          <div class="ripple cell-content">Quantum {{ quantum }}</div>
         </div>
       </div>
-</div>
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Border width
+          </div>
+        </header>
+        <main class="cell-content">
+          The colors on the cards are not affected because they're individually defined at the card level, and thus
+          prioritised according to standard CSS rules.
+        </main>
+        <div class="cell-actions">
+          <div class="ripple cell-content">Border {{ borderWidth }}</div>
+        </div>
+      </div>
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Border radius
+          </div>
+        </header>
+        <main class="cell-content">
+          Use the controls above to adjust some properties that affect the entire page.
+        </main>
+        <div class="cell-actions">
+          <div class="ripple cell-content">Border radius {{ borderRadius }}</div>
+        </div>
+      </div>
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Number of columns
+          </div>
+        </header>
+        <main class="cell-content">
+          Every size on the page is calculated as a multiple of the spacing unit, so setting the property to a different
+          value resizes all elements.
+        </main>
+        <div class="cell-actions">
+          <div class="ripple cell-content">Columns section {{ columns }}</div>
+        </div>
+      </div>
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Gutter spacing
+          </div>
+        </header>
+        <main class="cell-content">
+          Changing the number of columns is done by recalculating the relative size of cells on the grid.
+        </main>
+        <div class="cell-actions">
+          <div class="ripple cell-content">Gutter spacing {{ gutter }}</div>
+        </div>
+      </div>
+
+      <!-- color theme -->
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Primary
+          </div>
+        </header>
+        <main class="cell-content">
+          <ion-item lines="none">
+            <ion-label>Primary value</ion-label>
+            <ion-badge slot="end">{{ theme.getTheme().primary }}</ion-badge>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>tint</ion-label>
+            <ion-badge slot="end" class="primary-tint-bg">{{ theme.getTheme().primary }}</ion-badge>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>shade</ion-label>
+            <ion-badge slot="end" class="primary-shade-bg">{{ theme.getTheme().primary }}</ion-badge>
+          </ion-item>
+        </main>
+        <div class="cell-actions">
+          <button class="picker-button">
+            Edit this color
+            <div class="ripple"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Secondary
+          </div>
+        </header>
+        <main class="cell-content">
+          <ion-item lines="none">
+            <ion-label>Secondary value</ion-label>
+            <ion-badge slot="end" color="secondary">{{ theme.getTheme().secondary }}</ion-badge>
+          </ion-item>
+        </main>
+        <div class="cell-actions">
+          <button class="picker-button">
+            Edit this color
+            <div class="ripple"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Tertiary
+          </div>
+        </header>
+        <main class="cell-content">
+          <ion-item lines="none">
+            <ion-label>Tertiary value</ion-label>
+            <ion-badge slot="end" color="tertiary">{{ theme.getTheme().tertiary }}</ion-badge>
+          </ion-item>
+        </main>
+        <div class="cell-actions">
+          <button class="picker-button">
+            Edit this color
+            <div class="ripple"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Medium
+          </div>
+        </header>
+        <main class="cell-content">
+          <ion-item lines="none">
+            <ion-label>Medium value</ion-label>
+            <ion-badge slot="end" color="medium">{{ theme.getTheme().medium }}</ion-badge>
+          </ion-item>
+        </main>
+        <div class="cell-actions">
+          <button class="picker-button">
+            Edit this color
+            <div class="ripple"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Dark
+          </div>
+        </header>
+        <main class="cell-content">
+          <ion-item lines="none">
+            <ion-label>Dark value</ion-label>
+            <ion-badge slot="end" color="dark">
+              <span class="dark-contrast">
+                {{ theme.getTheme().dark }}
+              </span>
+            </ion-badge>
+          </ion-item>
+        </main>
+        <div class="cell-actions">
+          <button class="picker-button">
+            Edit this color
+            <div class="ripple"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="cell">
+        <header class="cell-header">
+          <div class="cell-title">
+            Warning
+          </div>
+        </header>
+        <main class="cell-content">
+          <ion-item lines="none">
+            <ion-label>Warning value</ion-label>
+            <ion-badge slot="end" color="warning">{{ theme.getTheme().warning }}</ion-badge>
+          </ion-item>
+        </main>
+        <div class="cell-actions">
+          <button class="picker-button">
+            Edit this color
+            <div class="ripple"></div>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </ion-grid>
+  
+</ion-content>
