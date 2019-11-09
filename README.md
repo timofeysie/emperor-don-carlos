@@ -5,6 +5,15 @@ An Ionic Angular app with dynamic theming.
 The PWA version of this project is live at [this address](https://emperor-don-carlos.firebaseapp.com/home).
 
 
+
+## Workflow
+
+```
+ionic serve (non-service worker dev)
+ionic build --prod
+firebase deploy
+```
+
 ## Creating the pwa
 
 Following [this guide](https://ionicframework.com/docs/publishing/progressive-web-app).
