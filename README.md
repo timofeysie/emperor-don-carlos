@@ -1,9 +1,12 @@
 # Emperor Don Carlos
 
-An Ionic Angular app with dynamic theming.
+An Ionic Angular Progressive Web App with dynamic theming.
 
 The PWA version of this project is live at [this address](https://emperor-don-carlos.firebaseapp.com/home).
 
+Firebase hosting provides fast response times thanks to CDNs, HTTPS enabled by default, and support for HTTP2 push.
+
+The two main requirements of a PWA are a Service Worker and a Web Manifest.  Angular has an @angular/pwa package that is used to automate this.
 
 
 ## Workflow
