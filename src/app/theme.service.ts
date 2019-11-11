@@ -7,20 +7,27 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class ThemeService {
+  theme: any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private storage: Storage
   ) {
     storage.get('theme').then(cssText => {
       this.setGlobalCSS(cssText);
+      this.theme = cssText;
     });
   }
 
+  getTheme() {
+    return this.theme;
+  }
+
   // Override all global variables with a new theme
-  setTheme(theme) {
-    const cssText = CSSTextGenerator(theme);
+  setTheme(_theme) {
+    const cssText = CSSTextGenerator(_theme);
     this.setGlobalCSS(cssText);
     this.storage.set('theme', cssText);
+    this.theme = cssText;
   }
 
   // Define a single CSS variable
